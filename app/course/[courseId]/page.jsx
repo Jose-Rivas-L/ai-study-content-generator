@@ -17,17 +17,17 @@ function Course(){
     const GetCourse= async() =>{
         const result = await axios.get(`/api/courses?courseId=${courseId}`);
         setCourse(result.data.result);
-        console.log(result); 
+        console.log("full course")
+        console.log(course); 
     }
 
     return(
         <div>
-            <DashboardHeader/>
-            <div className='mx-10 md:mx-36 lg:px-60 mt-10'>
+            <div className=''>
                 {/* Course intro  */}
                 <CourseIntroCard course={course}/>
                 {/* Study Material Options */}
-                <StudyMaterialSection/>
+                <StudyMaterialSection courseId={courseId} course={course}/>
                 {/* Chapte list */}
                 <ChapterList chapters={course?.courseLayout?.chapters}/>
             </div>             
